@@ -1,13 +1,40 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './routes/App';
+//import App from "./App";
 import reportWebVitals from './reportWebVitals';
 
+// Redux: Imports
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import reducer from "./reducers";
+
+// Redux: Initial State
+const initialState = {
+  isLogin: false,
+  user: {
+    username: "Ferkuthor",
+    password: "",
+  },
+  appLogic: {
+  }
+}
+
+// Redux: Create Store
+const store = createStore(reducer, initialState);
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+
+  // Redux: Provider
+  <Provider store={store}>
+
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+
+  </Provider>
+  ,
   document.getElementById('root')
 );
 
