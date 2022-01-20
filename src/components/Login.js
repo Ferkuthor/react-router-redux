@@ -1,7 +1,36 @@
 import React from 'react';
 
-const Login = () => {
-    return <h1>Login</h1>;
-};
+// Redux: Imports
+import { connect } from "react-redux";
+// Redux: Actions
+import { loginRequest } from "../actions";
 
-export default Login;
+const Login = (props) => {
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+
+        const username = "Ferkaka";
+        const password = "123456";
+        props.loginRequest({ username, password });
+    }
+
+    return (
+        <>
+            <h1>Login:</h1>
+            <form onSubmit={handleLogin}>
+                <input type="text" name="username" placeholder='Username' />
+                <input type="password" name="password" placeholder='Password' />
+                <button type="submit"> OK</button>
+            </form>
+        </>
+    )
+}
+
+// Redux: Actions -> Props
+const mapDispatchToProps = {
+    loginRequest,
+}
+
+// Redux: Connect
+export default connect(null, mapDispatchToProps)(Login);
