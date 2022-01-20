@@ -1,14 +1,21 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 // Redux: Imports
 import { connect } from "react-redux";
 
 // Redux: Map State
-const Home = ({ isLogin, user }) => (
+const Home = ({ isLogin, user }) => {
 
-    <h1>Welcome, {user.username} </h1>
-
-);
+    return (
+        <>
+            {isLogin
+                ? <h1> Welcome, {user.username} </h1>
+                : <h1> Go to <Link to="/login">Login </Link>  </h1>
+            }
+        </>
+    )
+}
 
 // Redux: State -> Props
 const mapStateToProps = state => (

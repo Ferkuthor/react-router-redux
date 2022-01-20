@@ -5,14 +5,15 @@ import { connect } from "react-redux";
 // Redux: Actions
 import { loginRequest } from "../actions";
 
-const Login = (props) => {
+const Login = (props) => {    
 
     const handleLogin = (e) => {
         e.preventDefault();
-
-        const username = "Ferkaka";
-        const password = "123456";
-        props.loginRequest({ username, password });
+        const username = e.target.username.value;
+        const password = e.target.password.value;
+        if (username && password) {
+            props.loginRequest({ username, password });
+        }
     }
 
     return (

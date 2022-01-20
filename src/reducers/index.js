@@ -7,6 +7,7 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 isLogin: true,
+                user: action.user,
             }
         default:
             return state;
